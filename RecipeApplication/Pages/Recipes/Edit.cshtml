@@ -1,0 +1,21 @@
+﻿@page "{id}"
+@model RecipeApplication.Pages.Recipes.EditModel
+@{
+    ViewData["Title"] = "Добавить рецепт";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form class="form-horizontal" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <partial name="_EditRecipePartial" model="Model.Input" />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Обновление</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

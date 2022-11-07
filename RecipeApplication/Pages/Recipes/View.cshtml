@@ -1,0 +1,26 @@
+﻿@page "{id}/{handler?}"
+@model RecipeApplication.Pages.Recipes.ViewModel
+@{
+    ViewData["Title"] = Model.Recipe.Name;
+}
+
+<h2>@Model.Recipe.Name</h2>
+<form asp-page-handler="Delete" asp-route-id="@Model.Recipe.Id">
+    <p>
+        @if (Model.CanEditRecipe)
+        {
+        <a asp-page="Edit" asp-route-id="@Model.Recipe.Id" class="btn btn-primary">Добавить</a>
+        <button class="btn btn-danger">Удалить</button>
+        }
+
+    </p>
+</form>
+<p>@Model.Recipe.Method</p>
+
+<dl>
+    @foreach (var i in Model.Recipe.Ingredients)
+    {
+        <dt>@i.Name</dt>
+        <dd>@i.Quantity</dd>
+    }
+</dl>
